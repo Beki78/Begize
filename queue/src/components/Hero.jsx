@@ -18,7 +18,7 @@ const Hero = () => {
     <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
-          className="flex items-center justify-between lg:px-12 px-10 bg-white border-b-[1px] border-slate-700"
+          className="fixed w-screen flex items-center justify-between lg:px-12 px-10 bg-white border-b-[1px] border-slate-700"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
@@ -49,12 +49,18 @@ const Hero = () => {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-gray-900"
+            <Link
+              to="/login"
+              className="text-sm font-semibold px-3.5 py-2.5 text-gray-900 bg-slate-300 hover:bg-slate-400 p-3 rounded-md mr-8 duration-300 ease-in-out"
             >
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+              Log In
+            </Link>
+            <Link
+              to="/signup"
+              className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 duration-300 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Sign Up
+            </Link>
           </div>
         </nav>
         <Dialog
@@ -91,20 +97,24 @@ const Hero = () => {
                   ))}
                 </div>
                 <div className="py-6">
-                  <a
-                    href="#"
+                  <Link
+                    to="/login"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Log in
-                  </a>
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Sign up
+                  </Link>
                 </div>
               </div>
             </div>
           </Dialog.Panel>
         </Dialog>
       </header>
-
-      
     </div>
   );
 };

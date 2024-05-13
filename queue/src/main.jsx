@@ -8,6 +8,8 @@ import Error from './pages/Error.jsx'
 import Queue from "./pages/Queue.jsx"
 import MyQueue from "./pages/MyQueue.jsx";
 import Admin from "./pages/Admin.jsx";
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
 
 
 
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <Admin />,
   },
+  {
+    path:"/login",
+    element:<Login/>
+  },
+  {
+    path:"/signup",
+    element:<Signup/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

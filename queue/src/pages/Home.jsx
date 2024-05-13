@@ -3,6 +3,8 @@ import Hero from '../components/Hero'
 import { Link } from 'react-router-dom';
 import queueimg from "../assets/jaime-lopes-6u0eiSIzUN8-unsplash.jpg"
 import Feature from '../components/Feature';
+import MyAccordion from '../components/MyAccordion';
+import Footer from '@/components/Footer';
 
 
 const Home = () => {
@@ -43,8 +45,12 @@ const Home = () => {
               </Link>
             </div>
           </div>
-          <div className=' shadow-2xl shadow-slate-500'>
-            <img src={queueimg} alt="" className="w-[800px] h-[350px] object-cover" />
+          <div className=" shadow-2xl shadow-slate-500">
+            <img
+              src={queueimg}
+              alt=""
+              className="w-[800px] h-[350px] object-cover"
+            />
           </div>
         </div>
         <div
@@ -59,8 +65,13 @@ const Home = () => {
             }}
           />
         </div>
-      </div> <hr className='border-[1px] rounded-md mx-12'/>
-      <Feature/>
+      </div>{" "}
+      <hr className="border-[1px] rounded-md mx-12" />
+      <Feature />
+      <div className="px-10 sm:px-20 md:px-60 my-20">
+        <MyAccordion />
+      </div>
+      <Footer />
     </>
   );
 }
