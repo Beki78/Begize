@@ -3,7 +3,12 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import Branch from "./models/queue.models.mjs";
 import cors from "cors"
+import User from "./models/user.models.mjs";
+import jwt from "jsonwebtoken"
 dotenv.config();
+const createToken = (_id) => {
+ return jwt.sign({ _id }, process.env.SECRET, {expiresIn: "3d"});
+}
 
 const app = express();
 
@@ -78,5 +83,36 @@ app.delete("/", async (req, res) => {
     res.status(200).json({ message: "All Queue Deleted" });
   } catch (error) {
     res.status(500).json(error.message);
+  }
+});
+
+
+//authentication 
+
+app.post("/login", async(req, res) => {
+  const {userPhoneNumber, password} = req.body
+  try {
+    const user = await User.login(
+      userPhoneNumber,
+      password
+    );
+    //create a token
+    const token = createToken(user._id);
+    res
+      .status(200)
+      .json({ userPhoneNumber, token });
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+})
+app.post("/signup", async (req, res) => {
+  const {userPhoneNumber, firstUserName, lastUserName, password} = req.body
+  try {
+    const user = await User.signup(userPhoneNumber, firstUserName, lastUserName, password)
+    //create a token 
+    const token = createToken(user._id)
+    res.status(200).json({userPhoneNumber, firstUserName, lastUserName, token})
+  } catch (error) {
+    res.status(400).json(error.message)
   }
 });
